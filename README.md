@@ -1,2 +1,2 @@
 # My-Nice-Project
-__Useful tips for beginners
+# Tips for beginners
