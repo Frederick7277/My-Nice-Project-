@@ -1,0 +1,26 @@
+# https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-foreign-key/
+
+# To specify that id is a primary key
+CREATE TABLE IF NOT EXISTS table_name (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, --specifies that it is a primary key
+    column1 VARCHAR CHECK (column1 = 'f' OR column1 = 'm' OR column1 = 'd'), --check what can be entered in the data
+    column2 datatype,
+   ....
+);
+
+# To automatically generate a primary key id
+CREATE TABLE IF NOT EXISTS table_name (
+    id SERIAL PRIMARY KEY, --automatically generated
+    customer_id INTEGER,
+	CONSTRAINT con_observation
+		FOREIGN KEY (customer_id) 			--my variable name
+			REFERENCES customers(id), --table name(variable I refer to)
+    column1 VARCHAR CHECK (column1 = 'f' OR column1 = 'm' OR column1 = 'd'), --check what can be entered in the data
+    column2 datatype,
+   ....
+);
+
+# inserting with DEFAULT for the automatically generated id
+INSERT INTO table_name VALUES (
+DEFAULT, ‘value1’,	‘value2’,	...,
+);
